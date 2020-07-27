@@ -1,0 +1,26 @@
+td {
+	text-align: left ;
+}
+
+fieldset {
+	border-color: black;
+	margin-left: 250px;
+	margin-right: 250px;
+}
+
+body {
+	background-color: pink;
+}
+
+legend {
+	color: black;
+}
+
+#add1{
+	color:red;
+}
+
+.tab1{
+color: blue;
+}
+

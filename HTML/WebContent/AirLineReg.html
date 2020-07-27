@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="AirLine.css">
+<script type="text/javascript">
+
+
+	function validate() {
+		
+		document.getElementById("userNameError").innerHTML = "";
+		document.getElementById("passwordError").innerHTML = "";
+		
+		
+		var userName = document.getElementById("userName").value;
+		var password = document.getElementById("password").value;
+
+		if (userName == "") {
+			document.getElementById("userNameError").innerHTML = "User Name can't be Empty!!!";
+			return false;
+		} 
+
+		if (password == "") {
+			document.getElementById("passwordError").innerHTML = "Password can't be Empty!!";
+			return false;
+		} 		
+		
+		if (password.length != 8) {
+			document.getElementById("passwordError").innerHTML = "Password must be 8 character long!!";
+			return false;
+		} 
+		return true;
+	}
+</script>
+
+</head>
+<body>
+
+	<fieldset>
+		<legend>Online Registration Form</legend>
+		<div align="center">
+			<form onsubmit="return validate()" action="success.html">
+				<table>
+
+					<tr>
+						<td>UserName</td>
+						<td><input type="text" name="user_name" id="userName"></td>
+						<td><span id="userNameError" style="color: red;">*</span></td>
+					</tr>
+					<tr>
+						<td>Password</td>
+						<td><input type="password" name="password" id="password"></td>
+						<td><span id="passwordError" style="color: red;">*</span></td>
+					</tr>
+
+					<tr>
+						<td><a href="list.html">Forgot Password</a></td>
+						<td align="right"><a href="SignUp.html">Sign Up</a></td>
+					</tr>
+
+				</table>
+
+				<p align="center">
+					<input type="submit" name="submit" value="Submit"> <input
+						type="reset" name="reset" value="Reset">
+				</p>
+
+			</form>
+		</div>
+
+	</fieldset>
+
+
+</body>
+</html>

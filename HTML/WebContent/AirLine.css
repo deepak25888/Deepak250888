@@ -1,0 +1,17 @@
+fieldset {
+	border-color: black;
+	margin-left: 250px;
+	margin-right: 250px;
+	margin-top: 175px;
+}
+
+legend {
+	color: "black";
+	font-style: bold;
+	margin-top: 250px;
+}
+
+body {
+	background-color: pink;
+}
+

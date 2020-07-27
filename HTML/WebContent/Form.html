@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="Form.css">
+<script type="text/javascript">
+	function validate() {
+
+		var firstName = document.getElementById("firstName").value;
+		var lastName = document.getElementById("lastName").value;
+		var emailId = document.getElementById("emailId").value;
+		var userName = document.getElementById("userName").value;
+		var password = document.getElementById("password").value;
+		var address = document.getElementById("address").value;
+		var age1= document.getElementById("age").value;
+		var date= document.getElementById("bdate").value;
+		var gender1=document.getElementsByName("gender");
+		var index=city.options[city.selectedIndex].value;
+		var check=document.getElementById("check");
+		counter=0;
+
+		if (firstName == "") {
+			document.getElementById("firstNameError").innerHTML = "First Name can't be Empty!!!";
+			counter=1;
+		} else {
+			document.getElementById("firstNameError").innerHTML = "";
+		}
+
+		if (lastName == "") {
+			document.getElementById("lastNameError").innerHTML = "Last Name can't be Empty!!";
+			counter=1;
+		} else {
+			document.getElementById("lastNameError").innerHTML = "";
+		}
+
+		if (emailId == "") {
+			document.getElementById("emailIdError").innerHTML = "Email ID can't be Empty!!!";
+			counter=1;
+		} else {
+			document.getElementById("emailIdError").innerHTML = "";
+		}
+
+		if (userName == "") {
+			document.getElementById("userNameError").innerHTML = "Usrname can't be Empty!!";
+			counter=1;
+		} else {
+			document.getElementById("userNameError").innerHTML = "";
+		}
+
+		if (password == "") {
+			document.getElementById("passwordError").innerHTML = "Password can't be Empty!!";
+			counter=1;
+		} else {
+			document.getElementById("passwordError").innerHTML = "";
+		}
+
+		if (password.length < 8) {
+			document.getElementById("passwordError").innerHTML = "Password must be atleast 8 character long!!";
+			counter=1;
+		} else {
+			document.getElementById("passwordError").innerHTML = "";
+		}
+
+		if (address == "") {
+			document.getElementById("addressError").innerHTML = "Address can't be Empty!!";
+			counter=1;
+		} else {
+			document.getElementById("addressError").innerHTML = "";
+		}
+		
+		if (age1 ==""){
+			document.getElementById("ageError").innerHTML = "Please enter the age!!";
+			counter=1;
+		}
+		
+		if(isNaN(age1)){
+			document.getElementById("ageError").innerHTML = "Please enter the age in numbers!!";
+			counter=1;
+		}
+		
+		if(age1.length!=2){
+			document.getElementById("ageError").innerHTML = "Please enter the age in two digits only!!";
+			counter=1;
+		}
+		else{
+			document.getElementById("ageError").innerHTML ="";
+		}
+		
+		if(date==""){
+			document.getElementById("dateError").innerHTML = "Please select date!!";
+			counter=1;
+		}
+		else{
+			document.getElementById("dateError").innerHTML ="";
+		}
+		
+		if(gender1[0].checked==false && gender1[1].checked==false)
+			{
+			document.getElementById("genderError").innerHTML="Please Select Gender!!"; 
+			counter=1;
+			}
+		else{
+			document.getElementById("genderError").innerHTML="";
+		}
+		
+		if(index==0){
+			document.getElementById("cityError").innerHTML="Please Select City!!";
+			counter=1;
+		}
+		else{
+			document.getElementById("cityError").innerHTML="";
+		}
+		
+		if(check.type=="checkbox"){
+			if(!(check.checked)){
+				document.getElementById("checkError").innerHTML="Please check captcha!!";
+				counter=1;
+			}
+			else{
+				document.getElementById("checkError").innerHTML="";
+			}
+		}
+
+		if(counter==1){
+			return false;
+		}else{
+			return true;
+		}
+	}
+</script>
+
+</head>
+<body>
+	<fieldset>
+		<legend>Registration Form</legend>
+		<div align="center">
+			<form onsubmit="return validate()" action="SuccessReg.html">
+				<table class="tab1">
+					<tr>
+						<td>First Name :</td>
+						<td><input type="text" name="first_name" id="firstName"></td>
+						<td><span id="firstNameError" style="color: red;">*</span></td>
+					</tr>
+					<tr>
+						<td>Last Name :</td>
+						<td><input type="text" name="last_name" id="lastName"></td>
+						<td><span id="lastNameError" style="color: red;"></span></td>
+					</tr>
+					<tr>
+						<td>Age</td>
+						<td><input type="text" name="age" id="age"></td>
+						<td><span id="ageError" style="color: red;">*</span></td>
+					</tr>
+					<tr>
+						<td>BirthDate</td>
+						<td><input type="date" name="bdate" id="bdate"></td>
+						<td><span id="dateError" style="color: red;">*</span></td>
+					</tr>
+
+
+					<tr>
+						<td>Email Id</td>
+						<td><input type="email" name="email_id" id="emailId"></td>
+						<td><span id="emailIdError" style="color: red;"></span></td>
+					</tr>
+					<tr>
+						<td>User Name :</td>
+						<td><input type="text" name="user_id" id="userName"></td>
+						<td><span id="userNameError" style="color: red;"></span></td>
+					</tr>
+					<tr>
+						<td>Password :</td>
+						<td><input type="password" name="password" id="password"></td>
+						<td><span id="passwordError" style="color: red;"></span></td>
+					</tr>
+					<tr>
+						<td>Address :</td>
+						<td><textarea rows="5" cols="20" name="address" id="address"></textarea></td>
+						<td><span id="addressError" style="color: red;"></span></td>
+					</tr>
+					<tr>
+						<td>Courses</td>
+						<td><input type="checkbox" name="check" value="PIP">PIP
+							<input type="checkbox" name="check" value="PJD">PJD <input
+							type="checkbox" name="check" value="PJS">PJS <input
+							type="checkbox" name="check" value="PJE">PJE</td>
+					</tr>
+
+					<tr>
+						<td>Gender</td>
+						<td><input type="radio" name="gender" id="genderM"
+							value="male">Male <input type="radio" name="gender"
+							id="genderF" value="female">Female</td>
+						<td><span id="genderError" style="color: red;">*</span></td>
+					</tr>
+					<tr>
+						<td>City :</td>
+						<td><select id="city">
+								<option value="0">Select</option>
+								<option value="Thane">Thane</option>
+								<option value="Mulund">Mulund</option>
+								<option value="Ghatkopar">Ghatkopar</option>
+								<option value="Kalyan">Kalyan</option>
+						</select></td>
+						<td><span id="cityError" style="color:red;"></span></td>
+					</tr>
+
+
+					<tr>
+						<td>Upload your Resume :</td>
+						<td><input type="file" name="resume" /></td>
+					</tr>
+					
+					<tr>
+					<td></td>
+					<td><input type="checkbox" name="check" id="check">I'm Not a Robot</td>
+					<td><span id="checkError" style="color:red;"></span></td>
+					</tr>
+
+					<tr></tr>
+					<tr></tr>
+
+
+
+				</table>
+
+				<p align="center">
+					<input type="submit" name="submit" value="Submit"> <input
+						type="reset" name="reset" value="Reset">
+				</p>
+
+			</form>
+
+		</div>
+	</fieldset>
+</body>
+</html>
