@@ -1,0 +1,303 @@
+
+mysql.jar
+	mysql-connector-java-8.0.11.jar
+	
+in
+	-->coder
+		-->foodplaza
+			-->pojo---Plain Old Java Object(Bean)---classes
+			-->dao---Data Access Object---Interfaces(dao) and DaoImpl classes
+			-->utility---connection related info
+			-->test---test classes with main()
+
+
+
+mysql> create database foodplaza_shweta494;
+Query OK, 1 row affected (0.40 sec)
+
+mysql> use foodplaza_shweta494;
+Database changed
+mysql> create table food(foodId int primary key auto_increment,foodName varchar(150),
+    -> foodType varchar(50),foodPrice double);
+Query OK, 0 rows affected (1.66 sec)
+
+
+
+foodplaza_shweta494
+
+mysql> desc food;
++-----------+--------------+------+-----+---------+----------------+
+| Field     | Type         | Null | Key | Default | Extra          |
++-----------+--------------+------+-----+---------+----------------+
+| foodId    | int          | NO   | PRI | NULL    | auto_increment |
+| foodName  | varchar(150) | YES  |     | NULL    |                |
+| foodType  | varchar(50)  | YES  |     | NULL    |                |
+| foodPrice | double       | YES  |     | NULL    |                |
++-----------+--------------+------+-----+---------+----------------+
+4 rows in set (0.01 sec)
+
+mysql> desc customer;(1001)
++-------------------+--------------+------+-----+---------+----------------+
+| Field             | Type         | Null | Key | Default | Extra          |
++-------------------+--------------+------+-----+---------+----------------+
+| custId            | int          | NO   | PRI | NULL    | auto_increment |
+| custName          | varchar(100) | YES  |     | NULL    |                |
+| custAddress       | varchar(100) | YES  |     | NULL    |                |
+| custEmailId       | varchar(100) | YES  |     | NULL    |                |
+| custContactNumber | varchar(15)  | YES  |     | NULL    |                |
+| custUserName      | varchar(100) | YES  |     | NULL    |                |
+| custPassword      | varchar(20)  | YES  |     | NULL    |                |
++-------------------+--------------+------+-----+---------+----------------+
+7 rows in set (0.00 sec)
+   alter table Customer auto_increment=1001;
+
+mysql> desc cart;(2001)
++--------------+--------------+------+-----+---------+----------------+
+| Field        | Type         | Null | Key | Default | Extra          |
++--------------+--------------+------+-----+---------+----------------+
+| cartId       | int          | NO   | PRI | NULL    | auto_increment |
+| foodId       | int          | YES  |     | NULL    |                |
+| quantity     | int          | YES  |     | NULL    |                |
+| custUserName | varchar(100) | YES  |     | NULL    |                |
++--------------+--------------+------+-----+---------+----------------+
+4 rows in set (0.00 sec)
+
+mysql> desc foodOrder;(3001)
++--------------+--------------+------+-----+---------+----------------+
+| Field        | Type         | Null | Key | Default | Extra          |
++--------------+--------------+------+-----+---------+----------------+
+| orderId      | int          | NO   | PRI | NULL    | auto_increment |
+| custUserName | varchar(100) | YES  |     | NULL    |                |
+| totalBill    | double       | YES  |     | NULL    |                |
+| orderStatus  | varchar(20)  | YES  |     | NULL    |                |
+| orderDate    | varchar(50)  | YES  |     | NULL    |                |
++--------------+--------------+------+-----+---------+----------------+
+5 rows in set (0.00 sec)
+
+mysql> desc orderInfo;(4001)
++----------+------+------+-----+---------+----------------+
+| Field    | Type | Null | Key | Default | Extra          |
++----------+------+------+-----+---------+----------------+
+| id       | int  | NO   | PRI | NULL    | auto_increment |
+| orderId  | int  | YES  |     | NULL    |                |
+| foodId   | int  | YES  |     | NULL    |                |
+| quantity | int  | YES  |     | NULL    |                |
++----------+------+------+-----+---------+----------------+
+4 rows in set (0.00 sec)
+
+
+mysql: [Warning] C:\Program Files\MySQL\MySQL Server 8.0\bin\mysql.exe: ignoring option '--no-beep' due to invalid value ''.
+Enter password: ****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 26
+Server version: 8.0.19 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++---------------------+
+| Database            |
++---------------------+
+| ct109               |
+| ct110               |
+| dbpy                |
+| foodplaza494        |
+| foodplaza_shweta494 |
+| foodplazadb494      |
+| information_schema  |
+| mysql               |
+| performance_schema  |
+| sample              |
+| sys                 |
++---------------------+
+11 rows in set (0.00 sec)
+
+mysql> use foodplaza_shweta494;
+Database changed
+mysql> show tables;
++-------------------------------+
+| Tables_in_foodplaza_shweta494 |
++-------------------------------+
+| food                          |
++-------------------------------+
+1 row in set (0.00 sec)
+
+mysql> desc food
+    -> ;
++-----------+--------------+------+-----+---------+----------------+
+| Field     | Type         | Null | Key | Default | Extra          |
++-----------+--------------+------+-----+---------+----------------+
+| foodId    | int          | NO   | PRI | NULL    | auto_increment |
+| foodName  | varchar(150) | YES  |     | NULL    |                |
+| foodType  | varchar(50)  | YES  |     | NULL    |                |
+| foodPrice | double       | YES  |     | NULL    |                |
++-----------+--------------+------+-----+---------+----------------+
+4 rows in set (0.00 sec)
+
+mysql> create table cart(
+    -> cartId int primary key auto_increment,
+    -> foodId int,
+    -> quantity int,
+    -> custUserName varchar(100));
+Query OK, 0 rows affected (1.34 sec)
+
+
+mysql> create table customer(
+    -> custId int primary key auto_increment,
+    -> custName varchar(100),
+    -> custAddress varchar(100),
+    -> custEmailId varchar(100),
+    -> custContactNumber varchar(15),
+    -> custUserName varchar(100),
+    -> custPassword varchar(20));
+Query OK, 0 rows affected (0.99 sec)
+
+mysql> alter table customer auto_increment=1001;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '=1001' at line 1
+mysql> alter table customer auto_increment=1001;
+Query OK, 0 rows affected (0.45 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc customer;
++-------------------+--------------+------+-----+---------+----------------+
+| Field             | Type         | Null | Key | Default | Extra          |
++-------------------+--------------+------+-----+---------+----------------+
+| custId            | int          | NO   | PRI | NULL    | auto_increment |
+| custName          | varchar(100) | YES  |     | NULL    |                |
+| custAddress       | varchar(100) | YES  |     | NULL    |                |
+| custEmailId       | varchar(100) | YES  |     | NULL    |                |
+| custContactNumber | varchar(15)  | YES  |     | NULL    |                |
+| custUserName      | varchar(100) | YES  |     | NULL    |                |
+| custPassword      | varchar(20)  | YES  |     | NULL    |                |
++-------------------+--------------+------+-----+---------+----------------+
+7 rows in set (0.00 sec)
+
+mysql> desc cart;
++--------------+--------------+------+-----+---------+----------------+
+| Field        | Type         | Null | Key | Default | Extra          |
++--------------+--------------+------+-----+---------+----------------+
+| cartId       | int          | NO   | PRI | NULL    | auto_increment |
+| foodId       | int          | YES  |     | NULL    |                |
+| quantity     | int          | YES  |     | NULL    |                |
+| custUserName | varchar(100) | YES  |     | NULL    |                |
++--------------+--------------+------+-----+---------+----------------+
+4 rows in set (0.00 sec)
+
+mysql> create table sample(
+    -> id int primary key auto_increment,
+    -> name varchar(10));
+Query OK, 0 rows affected (1.38 sec)
+
+mysql> alter table sample auto_increment=1001;
+Query OK, 0 rows affected (0.20 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc sample;
++-------+-------------+------+-----+---------+----------------+
+| Field | Type        | Null | Key | Default | Extra          |
++-------+-------------+------+-----+---------+----------------+
+| id    | int         | NO   | PRI | NULL    | auto_increment |
+| name  | varchar(10) | YES  |     | NULL    |                |
++-------+-------------+------+-----+---------+----------------+
+2 rows in set (0.00 sec)
+
+mysql> insert into sample(name) values("zxc");
+Query OK, 1 row affected (0.14 sec)
+
+mysql> select * from sample;
++------+------+
+| id   | name |
++------+------+
+| 1001 | zxc  |
++------+------+
+1 row in set (0.00 sec)
+
+mysql> insert into sample(name) values("abs");
+Query OK, 1 row affected (0.18 sec)
+
+mysql> select * from sample;
++------+------+
+| id   | name |
++------+------+
+| 1001 | zxc  |
+| 1002 | abs  |
++------+------+
+2 rows in set (0.00 sec)
+
+mysql> alter table cart auto_increment=2001;
+Query OK, 0 rows affected (0.29 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> create table foodOrder(
+    -> orderId int primaru key auto_increment,
+    -> custUserName varchar(100),
+    -> totalBill double,
+    -> orderStatus varchar(20),
+    -> orderDate varchar(50));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'primaru key auto_increment,
+custUserName varchar(100),
+totalBill double,
+orderSt' at line 2
+mysql> create table foodOrder(
+    -> orderId int primary key auto_increment,
+    -> custUserName varchar(100),
+    -> totalBill double,
+    -> orderStatus varchar(20),
+    -> orderDate varchar(50));
+Query OK, 0 rows affected (1.31 sec)
+
+mysql> alter table foodOrder auto_increment=3001;
+Query OK, 0 rows affected (0.54 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> create table orderInfo(
+    -> id int primary key auto_increment,
+    -> orderId int,
+    -> foodId int,
+    -> quantity int);
+Query OK, 0 rows affected (1.54 sec)
+
+mysql> alter table orderInfo auto_increment=4001;
+Query OK, 0 rows affected (0.26 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc foodOrder;
++--------------+--------------+------+-----+---------+----------------+
+| Field        | Type         | Null | Key | Default | Extra          |
++--------------+--------------+------+-----+---------+----------------+
+| orderId      | int          | NO   | PRI | NULL    | auto_increment |
+| custUserName | varchar(100) | YES  |     | NULL    |                |
+| totalBill    | double       | YES  |     | NULL    |                |
+| orderStatus  | varchar(20)  | YES  |     | NULL    |                |
+| orderDate    | varchar(50)  | YES  |     | NULL    |                |
++--------------+--------------+------+-----+---------+----------------+
+5 rows in set (0.00 sec)
+
+mysql> desc orderInfo;
++----------+------+------+-----+---------+----------------+
+| Field    | Type | Null | Key | Default | Extra          |
++----------+------+------+-----+---------+----------------+
+| id       | int  | NO   | PRI | NULL    | auto_increment |
+| orderId  | int  | YES  |     | NULL    |                |
+| foodId   | int  | YES  |     | NULL    |                |
+| quantity | int  | YES  |     | NULL    |                |
++----------+------+------+-----+---------+----------------+
+4 rows in set (0.00 sec)
+
+mysql> select * from food;
++--------+----------+----------+-----------+
+| foodId | foodName | foodType | foodPrice |
++--------+----------+----------+-----------+
+|      1 | aa       | aa       |       256 |
+|      2 | pizza    | italian  |       500 |
+|      3 | pizza    | veg      |       500 |
++--------+----------+----------+-----------+
+3 rows in set (0.00 sec)
+
+mysql>

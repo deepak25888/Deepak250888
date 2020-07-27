@@ -1,0 +1,46 @@
+1.Register Driver Class
+	java.sql.*;
+	
+	Class====forName()
+	public static void forName(String driverClassName) throws ClassNOtFoundException
+	
+	Class.forName("")
+	
+2.Create Connection
+	DriverManager====getConnection()
+	
+	public static Connection getConnection(String url) throws SQLException
+	public static Connection getConnection(String url,String userName,String password) throws SQLException
+
+	Connection con=DriverManager.getConnection("","","")
+
+3.Create Statement/PreparedStatement
+
+	Statement ---static queries---insert into samp values(101,"Shweta");
+	PreparedStatement----dynamic queries----insert into samp values(?,?);
+	CallableStatement----procedure
+	
+	public PreparedStatement prepareStatement(String query) throws SQLException
+	
+	String sql="insert into samp values(?,?)";
+	PreparedStatement pstmt=con.prepareStatement(sql);
+	pstsmt.setInt(1,id);
+	
+4.Execute Query
+	PreparedStatement
+		public int executeUpdate()----DML(insert,update,delete)
+		---int x=pstmt.executeUpdate();
+		public ResultSet executeQuery()-----DQL(select)
+		----ResultSet rs=pstmt.executeQuery()
+			while(rs.next())
+			{
+				id=rs.getInt("id");
+			}
+		
+
+5.Close Connection
+	Connection
+		public void close() throws SQLException
+	
+	con.close();
+
