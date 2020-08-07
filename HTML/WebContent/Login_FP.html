@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="AddCustomer.css">
+<script type="text/javascript">
+	function validate() {
+		
+		document.getElementById("adminCustError").innerHTML=""; 
+		document.getElementById("emailIdError").innerHTML = "";
+		document.getElementById("passwordError").innerHTML = "";
+		
+		var choice=document.getElementsByName("choice");
+		if(choice[0].checked==false && choice[1].checked==false)
+		{
+		document.getElementById("adminCustError").innerHTML="Please Select an Option!!"; 
+		return false;
+		}
+
+		var emailId = document.getElementById("emailId").value;
+		if (emailId == "") {
+			document.getElementById("emailIdError").innerHTML = "Email Id can't be Empty!!!";
+			return false;
+		}
+
+		var password = document.getElementById("password").value;
+		if (password == "") {
+			document.getElementById("passwordError").innerHTML = "Password can't be Empty!!!";
+			return false;
+		}
+
+	}
+</script>
+
+</head>
+<body>
+	<fieldset class="fldset">
+		<legend>Login</legend>
+		<div align="center" class="div1">
+			<form onsubmit="return validate()" action="Success.html">
+				<table class="tab1">
+					<tr>
+						<td></td>
+						<td><input type="radio" name="choice" id="admin"
+							value="Admin">Admin <input type="radio" name="choice"
+							id="customer" value="Customer">Customer</td>
+						<td><span id="adminCustError" style="color: red;">*</span></td>
+					</tr>
+					<tr></tr>
+					<tr></tr>
+					<tr></tr>
+					<tr>
+						<td>Email Id</td>
+						<td><input type="email" name="emailId" id="emailId"></td>
+						<td><span id="emailIdError" style="color: red;">*</span></td>
+					</tr>
+					<tr>
+						<td>Password</td>
+						<td><input type="password" name="password" id="password"></td>
+						<td><span id="passwordError" style="color: red;">*</span></td>
+					</tr>
+					<tr>
+						<td></td>
+
+						<td align="right"><a href="ChangePassword_FP.html">Forgot
+								Password</a></td>
+					</tr>
+				</table>
+
+				<p align="center">
+					<input type="submit" name="login" value="Login"> <input
+						type="reset" name="reset" value="Cancel">
+				</p>
+
+
+
+
+			</form>
+
+
+
+		</div>
+	</fieldset>
+</body>
+</html>

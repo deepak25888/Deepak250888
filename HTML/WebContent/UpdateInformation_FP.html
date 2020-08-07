@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="AddCustomer.css">
+<script type="text/javascript">
+function validate(){
+	
+	document.getElementById("custIdError").innerHTML = "";
+	document.getElementById("custNameError").innerHTML = "";
+	document.getElementById("addressError").innerHTML = "";
+	document.getElementById("contactNoError").innerHTML = "";
+	document.getElementById("emailIdError").innerHTML = "";
+	
+	
+	var custId = document.getElementById("custId").value;
+	if (custId == "") {
+		document.getElementById("custIdError").innerHTML = "Customer Id can't be Empty!!!";
+		return false;
+	}
+	
+	var custName=document.getElementById("custName").value;
+	if (custName == "") {
+		document.getElementById("custNameError").innerHTML = "Customer Name can't be Empty!!!";
+		return false;
+	}
+	
+	var address=document.getElementById("address").value;
+	if (address=="") {
+		document.getElementById("addressError").innerHTML = "Address can't be empty!!!";
+		return false;
+	}
+	
+	var contactNo=document.getElementById("contactNo").value;
+	if (contactNo.length !=10) {
+		document.getElementById("contactNoError").innerHTML = "Enter a valid contact no!!!";
+		return false;
+	}
+	
+	var emailId=document.getElementById("emailId").value;
+	if (emailId == "") {
+		document.getElementById("emailIdError").innerHTML = "Enter valid email id!!!";
+		return false;
+	}
+}
+
+</script>
+
+</head>
+<body>
+	<fieldset class="fldset">
+		<legend>Update Information</legend>
+		<div align="center" class="div1">
+			<form onsubmit="return validate()" action="Success.html">
+				<table class="tab1">
+					<tr>
+						<td>Customer Id</td>
+						<td><input type="text" name="custId" id="custId"></td>
+						<td><span id="custIdError" style="color: red;">*</span></td>
+					</tr>
+					<tr>
+						<td>Customer Name</td>
+						<td><input type="text" name="custName" id="custName"></td>
+						<td><span id="custNameError" style="color: red;">*</span></td>
+					</tr>
+					<tr>
+						<td>Address</td>
+						<td><textarea rows="5" cols="20" name="address" id="address"></textarea></td>
+						<td><span id="addressError" style="color: red;">*</span></td>
+					</tr>
+					
+					<tr>
+						<td>Contact No</td>
+						<td><input type="text" name="contactNo" id="contactNo"></td>
+						<td><span id="contactNoError" style="color: red;">*</span></td>
+					</tr>
+					<tr>
+						<td>Email Id</td>
+						<td><input type="email" name="emailId" id="emailId"></td>
+						<td><span id="emailIdError" style="color: red;">*</span></td>
+					</tr>
+					
+				</table>
+
+				<p align="center">
+					<input type="submit" name="update" value="Update"> <input
+						type="reset" name="reset" value="Clear">
+				</p>
+
+
+			</form>
+
+
+
+		</div>
+	</fieldset>
+
+</body>
+</html>

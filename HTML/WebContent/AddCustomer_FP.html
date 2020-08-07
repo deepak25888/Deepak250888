@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="AddCustomer.css">
+<script type="text/javascript">
+function validate(){
+	
+	document.getElementById("nameError").innerHTML = "";
+	document.getElementById("addressError").innerHTML = "";
+	document.getElementById("mobileNoError").innerHTML = "";
+	document.getElementById("emailIdError").innerHTML = "";
+	document.getElementById("userNameError").innerHTML = "";
+	document.getElementById("passwordError").innerHTML = "";
+	
+	var name = document.getElementById("name").value;
+	if (name == "") {
+		document.getElementById("nameError").innerHTML = "Customer Name can't be Empty!!!";
+		return false;
+	}
+	
+	var address=document.getElementById("address").value;
+	if (address == "") {
+		document.getElementById("addressError").innerHTML = "Customer Address can't be Empty!!!";
+		return false;
+	}
+	
+	var mobileNo=document.getElementById("mobileNo").value;
+	if (mobileNo.length !=10) {
+		document.getElementById("mobileNoError").innerHTML = "Enter a valid moble no!!!";
+		return false;
+	}
+	
+	var emailId=document.getElementById("emailId").value;
+	if (emailId == "") {
+		document.getElementById("emailIdError").innerHTML = "Enter valid email id!!!";
+		return false;
+	}
+	
+	var userName=document.getElementById("userName").value;
+	if (userName == "") {
+		document.getElementById("userNameError").innerHTML = "User Name can't be Empty!!!";
+		return false;
+	}
+	
+	var password=document.getElementById("password").value;
+	if (password == "") {
+		document.getElementById("passwordError").innerHTML = "Password can't be Empty!!!";
+		return false;
+	}
+	
+}
+
+</script>
+
+</head>
+<body>
+	<fieldset class="fldset">
+		<legend>Add Customer</legend>
+		<div align="center" class="div1">
+			<form onsubmit="return validate()" action="Success.html">
+				<table class="tab1">
+					<tr>
+						<td>Name</td>
+						<td><input type="text" name="name" id="name"></td>
+						<td><span id="nameError" style="color: red;">*</span></td>
+					</tr>
+					<tr>
+						<td>Address</td>
+						<td><textarea rows="5" cols="20" name="address" id="address"></textarea></td>
+						<td><span id="addressError" style="color: red;">*</span></td>
+					</tr>
+					<tr>
+						<td>Mobile No</td>
+						<td><input type="text" name="mobileNo" id="mobileNo"></td>
+						<td><span id="mobileNoError" style="color: red;">*</span></td>
+					</tr>
+					<tr>
+						<td>Email Id</td>
+						<td><input type="email" name="emailId" id="emailId"></td>
+						<td><span id="emailIdError" style="color: red;">*</span></td>
+					</tr>
+					<tr>
+						<td>User Name</td>
+						<td><input type="text" name="userName" id="userName"></td>
+						<td><span id="userNameError" style="color: red;">*</span></td>
+					</tr>
+					<tr>
+						<td>Password</td>
+						<td><input type="password" name="password" id="password"></td>
+						<td><span id="passwordError" style="color: red;">*</span></td>
+					</tr>
+
+
+				</table>
+
+				<p align="center">
+					<input type="submit" name="add" value="Add"> <input
+						type="reset" name="reset" value="Clear">
+				</p>
+
+
+			</form>
+
+
+
+		</div>
+	</fieldset>
+
+</body>
+</html>
